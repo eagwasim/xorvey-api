@@ -12,10 +12,13 @@ data class JpaPaymentTransaction(
         @ManyToOne(fetch = FetchType.LAZY, optional = false)
         val paymentHistory: JpaPaymentHistory,
         @Column(nullable = false)
+        @Enumerated(EnumType.STRING)
         var paymentStatus: PaymentStatusConstant,
         @Column(nullable = false)
+        @Enumerated(EnumType.STRING)
         val paymentChannel: PaymentChannelConstant,
         @Column(nullable = false)
+        @Enumerated(EnumType.STRING)
         val paymentProvider: PaymentProviderConstant,
         @Column(nullable = false)
         val amount: BigDecimal,

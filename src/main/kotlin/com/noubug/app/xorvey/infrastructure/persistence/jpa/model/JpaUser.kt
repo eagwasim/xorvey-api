@@ -7,7 +7,7 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "app_user")
-data class JpaUser(
+class JpaUser(
         @Column(nullable = false)
         var firstName: String,
         @Column(nullable = false)

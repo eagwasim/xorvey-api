@@ -24,7 +24,7 @@ class UserRegistrationImpl(
 
         context["name"] = userRegistrationRequest.firstName
         context["title"] = "Xorvey Email Confirmation"
-        context["message"] = String.format(Locale.ENGLISH, "You have created a Xorvey account. As an extra security measure, please verify this is the correct email address by clicking the button below")
+        context["message"] = String.format(Locale.ENGLISH, "You have created a Xorvey %s account. As an extra security measure, please verify this is the correct email address by clicking the button below", userRegistrationRequest.accountType.replace("_", " "))
         context["link"] = String.format(Locale.ENGLISH, "https://www.xorvery.com/web/verify/email/reg?token=%s", registeredUser.emailVerificationToken)
         context["linkText"] = "Confirm Your Email With Xorvey"
 

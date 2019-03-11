@@ -12,6 +12,7 @@ data class JpaPaymentHistory(
         @Column(nullable = false)
         val amount: BigDecimal,
         @Column(nullable = false)
+        @Enumerated(EnumType.STRING)
         var paymentStatus: PaymentStatusConstant,
         @Column(nullable = false, length = 256)
         val description: String
