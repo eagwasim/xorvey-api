@@ -6,5 +6,10 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "billing_tariff")
-data class JpaBillingTariff(@Column(nullable = false) @Enumerated(EnumType.STRING) val tariffName: TariffConstant, @Column(nullable = false) var amount: BigDecimal)
-    : JpaAbstractPersistable<Long>()
+data class JpaBillingTariff(
+        @Column(nullable = false)
+        @Enumerated(EnumType.STRING)
+        val tariffName: TariffConstant,
+        @Column(nullable = false)
+        var amount: BigDecimal
+) : JpaAbstractPersistable<Long>()

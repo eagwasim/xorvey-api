@@ -7,7 +7,7 @@ import javax.persistence.*
 @Entity
 @Table(name = "payment_history")
 data class JpaPaymentHistory(
-        @ManyToOne(fetch = FetchType.LAZY)
+        @ManyToOne(fetch = FetchType.LAZY, optional = false)
         val billingAccount: JpaBillingAccount,
         @Column(nullable = false)
         val amount: BigDecimal,

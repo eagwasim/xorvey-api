@@ -1,4 +1,4 @@
-package com.noubug.app.xorvey.domain.account.entity
+package com.noubug.app.xorvey.domain.entity
 
 data class User(
         val id: Long?,
@@ -7,5 +7,6 @@ data class User(
         val email: String,
         val authKey: String?,
         val emailVerified: Boolean,
-        val password: String
+        val password: String,
+        val account: Account
 )

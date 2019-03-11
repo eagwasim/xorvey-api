@@ -9,8 +9,7 @@ import javax.persistence.*
 @Entity
 @Table(name = "payment_transaction")
 data class JpaPaymentTransaction(
-        @Column(nullable = false)
-        @ManyToOne(fetch = FetchType.LAZY)
+        @ManyToOne(fetch = FetchType.LAZY, optional = false)
         val paymentHistory: JpaPaymentHistory,
         @Column(nullable = false)
         var paymentStatus: PaymentStatusConstant,
@@ -22,4 +21,4 @@ data class JpaPaymentTransaction(
         val amount: BigDecimal,
         @Column(unique = true)
         val reference: String
-)
+): JpaAbstractPersistable<Long>()

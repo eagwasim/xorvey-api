@@ -16,7 +16,7 @@ class AccessController(val userLogin: UserLogin, val userForgotPassword: UserFor
 
     @ResponseBody
     @PostMapping("/api/v1/access/register")
-    fun register(@RequestBody @Valid userRegistrationRequestJSON: UserRegistrationRequestJSON): ControllerResponseJSON<UserRegistrationResponseJSON> {
+    fun register(@Valid @RequestBody userRegistrationRequestJSON: UserRegistrationRequestJSON): ControllerResponseJSON<UserRegistrationResponseJSON> {
         return ControllerResponseJSON("success", UserRegistrationResponseJSON(userRegistration.registerUser(userRegistrationRequestJSON.toRequest()).userId))
     }
 

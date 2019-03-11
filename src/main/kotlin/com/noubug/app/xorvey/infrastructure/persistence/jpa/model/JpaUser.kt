@@ -17,8 +17,9 @@ data class JpaUser(
         @Column(nullable = false)
         var authKey: String,
         @Column(nullable = false)
-        var emailVerified: String,
+        var emailVerified: Boolean,
         @Column(nullable = false)
-        @ManyToOne
+        var password: String,
+        @ManyToOne(optional = false)
         val account: JpaAccount
 ) : JpaAbstractPersistable<Long>()
