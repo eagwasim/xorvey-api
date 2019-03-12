@@ -1,6 +1,7 @@
 package com.noubug.app.xorvey.infrastructure.web
 
 import com.noubug.app.xorvey.infrastructure.exception.InputParameterException
+import com.noubug.app.xorvey.infrastructure.exception.TokenException
 import com.noubug.app.xorvey.infrastructure.web.model.ControllerResponseJSON
 import org.springframework.beans.TypeMismatchException
 import org.springframework.http.HttpHeaders
@@ -78,6 +79,18 @@ class BaseControllerAdvice : ResponseEntityExceptionHandler() {
     @ExceptionHandler(MethodArgumentTypeMismatchException::class)
     fun handleMethodArgumentTypeMismatch(ex: MethodArgumentTypeMismatchException, request: WebRequest): ResponseEntity<Any> {
         val apiError = ApiError(HttpStatus.BAD_REQUEST, ex.localizedMessage, ex.name + " should be of type " + ex.requiredType!!.name)
+        return ResponseEntity(apiError, HttpHeaders(), apiError.status)
+    }
+
+    @ExceptionHandler(TokenException::class)
+    fun handleAuthenticationException(ex: TokenException, request: WebRequest): ResponseEntity<Any> {
+        val apiError = ApiError(HttpStatus.UNAUTHORIZED, ex.localizedMessage, "Exception parsing token")
+        return ResponseEntity(apiError, HttpHeaders(), apiError.status)
+    }
+
+    @ExceptionHandler(AccessDeniedException::class)
+    fun handleAccessDeniedException(ex: AccessDeniedException, request: WebRequest): ResponseEntity<Any> {
+        val apiError = ApiError(HttpStatus.UNAUTHORIZED, ex.localizedMessage, "Access Denied")
         return ResponseEntity(apiError, HttpHeaders(), apiError.status)
     }
 

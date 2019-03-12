@@ -30,11 +30,21 @@ class UserRegistrationRequestJSON(
 )
 
 data class UserRegistrationResponseJSON(val userId: Long)
-class UserLoginRequestJSON()
-class UserLoginResponseJSON()
-class UserForgotPasswordRequestJSON()
-class UserForgotPasswordResponseJSON()
-class UserResetPasswordRequestJSON()
+data class UserForgotPasswordRequestJSON(val email: String)
+data class UserResetPasswordRequestJSON(val token: String, val password: String)
+
+data class UserLoginRequestJSON(
+        @field:NotNull
+        @field:NotBlank
+        @field:Email
+        val email: String,
+        @field:NotNull
+        @field:NotBlank
+        val password: String
+)
+
+data class UserLoginResponseJSON(val token: String)
+
 class UserResetPasswordResponseJSON()
 
 fun UserRegistrationRequestJSON.toRequest() = UserRegistrationRequest(this.firstName, this.lastName, this.email, this.password, this.accountType, this.accountName)

@@ -1,4 +1,4 @@
-package com.noubug.app.xorvey.infrastructure.persistence.gateway
+package com.noubug.app.xorvey.infrastructure.gateway
 
 import com.noubug.app.xorvey.domain.entity.Email
 import com.noubug.app.xorvey.domain.gateway.EmailGateway

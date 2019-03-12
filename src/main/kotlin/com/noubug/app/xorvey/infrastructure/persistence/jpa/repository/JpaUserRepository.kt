@@ -1,7 +1,6 @@
 package com.noubug.app.xorvey.infrastructure.persistence.jpa.repository
 
 import com.noubug.app.xorvey.infrastructure.persistence.jpa.model.JpaUser
-import jdk.nashorn.internal.runtime.options.Option
 import org.springframework.data.jpa.repository.JpaRepository
 import java.util.*
 
