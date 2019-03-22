@@ -1,5 +1,5 @@
 package com.noubug.app.xorvey.usecase
 
-interface UserForgotPassword {
+interface AccessForgotPassword {
     fun sendResetLink(email: String)
 }

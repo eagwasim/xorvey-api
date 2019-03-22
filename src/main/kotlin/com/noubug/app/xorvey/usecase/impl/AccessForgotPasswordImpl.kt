@@ -3,21 +3,21 @@ package com.noubug.app.xorvey.usecase.impl
 import com.noubug.app.xorvey.domain.entity.Email
 import com.noubug.app.xorvey.domain.gateway.EmailGateway
 import com.noubug.app.xorvey.domain.gateway.LocaleGateway
-import com.noubug.app.xorvey.domain.gateway.UserGateway
-import com.noubug.app.xorvey.usecase.UserForgotPassword
+import com.noubug.app.xorvey.domain.gateway.AccessGateway
+import com.noubug.app.xorvey.usecase.AccessForgotPassword
 import com.noubug.app.xorvey.usecase.utils.FreemarkerUtils
 import java.util.*
 import javax.inject.Named
 
 @Named
-class UserForgotPasswordImpl(
-        private val userGateway: UserGateway,
+class AccessForgotPasswordImpl(
+        private val accessGateway: AccessGateway,
         private val freemarkerUtils: FreemarkerUtils,
         private val emailGateway: EmailGateway,
         private val localeGateway: LocaleGateway
-) : UserForgotPassword {
+) : AccessForgotPassword {
     override fun sendResetLink(email: String) {
-        val token = userGateway.generatePasswordResetToken(email)
+        val token = accessGateway.generatePasswordResetToken(email)
 
         val context = HashMap<String, Any>()
 

@@ -1,5 +1,5 @@
 package com.noubug.app.xorvey.usecase
 
-interface UserResetPassword {
+interface AccessResetPassword {
     fun resetPassword(token: String, password: String)
 }

@@ -103,7 +103,7 @@ class BaseControllerAdvice : ResponseEntityExceptionHandler() {
     }
 
     override fun handleNoHandlerFoundException(ex: NoHandlerFoundException, headers: HttpHeaders, status: HttpStatus, request: WebRequest): ResponseEntity<Any> {
-        val apiError = ApiError(HttpStatus.NOT_FOUND, ex.localizedMessage, "No handler found for " + ex.httpMethod + " " + ex.requestURL)
+        val apiError = ApiError(HttpStatus.NOT_FOUND, ex.localizedMessage, "No handler found for ${ex.httpMethod} ${ex.requestURL}")
         return ResponseEntity(apiError, HttpHeaders(), apiError.status)
     }
 
@@ -111,7 +111,7 @@ class BaseControllerAdvice : ResponseEntityExceptionHandler() {
         val builder = StringBuilder()
         builder.append(ex.method)
         builder.append(" method is not supported for this request. Supported methods are ")
-        ex.supportedHttpMethods!!.forEach { t -> builder.append(t.toString() + " ") }
+        ex.supportedHttpMethods!!.forEach { t -> builder.append("$t ") }
         val apiError = ApiError(HttpStatus.METHOD_NOT_ALLOWED, ex.localizedMessage, builder.toString())
         return ResponseEntity(apiError, HttpHeaders(), apiError.status)
     }
@@ -120,7 +120,7 @@ class BaseControllerAdvice : ResponseEntityExceptionHandler() {
         val builder = StringBuilder()
         builder.append(ex.contentType)
         builder.append(" media type is not supported. Supported media types are ")
-        ex.supportedMediaTypes.forEach { t -> builder.append(t.toString() + " ") }
+        ex.supportedMediaTypes.forEach { t -> builder.append("$t ") }
         val apiError = ApiError(HttpStatus.UNSUPPORTED_MEDIA_TYPE, ex.localizedMessage, builder.substring(0, builder.length - 2))
         return ResponseEntity(apiError, HttpHeaders(), apiError.status)
     }

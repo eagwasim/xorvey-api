@@ -22,7 +22,6 @@ import javax.annotation.PostConstruct
 import javax.inject.Named
 import javax.servlet.http.HttpServletRequest
 
-
 @Named
 class JwtTokenProvider(private val appUserDetail: ApiUserDetail) {
     @Value("\${security.jwt.token.secret-key:9y1oFvQRhlb7sR68sYowM7bfifiY9bXF}")

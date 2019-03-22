@@ -1,6 +1,6 @@
 package com.noubug.app.xorvey.domain.entity
 
-data class User(
+data class Access(
         val id: Long?,
         val firstName: String,
         val lastName: String,
