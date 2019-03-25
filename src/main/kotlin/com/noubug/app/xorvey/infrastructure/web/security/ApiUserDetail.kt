@@ -1,12 +1,16 @@
 package com.noubug.app.xorvey.infrastructure.web.security
 
+import com.noubug.app.xorvey.usecase.AccessGetUserDetailByEmail
+import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Service
 
 @Service
-class ApiUserDetail : UserDetailsService {
+class ApiUserDetail(private val accessGetUserDetailByEmail: AccessGetUserDetailByEmail) : UserDetailsService {
     override fun loadUserByUsername(username: String?): UserDetails {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val accessUserDetail = accessGetUserDetailByEmail.getUserDetails(username!!)
+        return User(accessUserDetail.email, accessUserDetail.authKey, null)
     }
 }

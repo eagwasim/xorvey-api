@@ -19,6 +19,7 @@ class WebSecurityConfig(val jwtTokenProvider: JwtTokenProvider) : WebSecurityCon
                 .antMatchers("/api/v1/access/register").permitAll()
                 .antMatchers("/api/v1/access/password/forgot").permitAll()
                 .antMatchers("/api/v1/access/password/reset").permitAll()
+                .antMatchers("/web/verify/email/reg").permitAll()
                 .anyRequest().authenticated()
 
         http.apply(JwtTokenFilterConfigurer(jwtTokenProvider))

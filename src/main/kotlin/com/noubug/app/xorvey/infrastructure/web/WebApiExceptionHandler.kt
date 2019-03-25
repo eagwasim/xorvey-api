@@ -127,6 +127,7 @@ class BaseControllerAdvice : ResponseEntityExceptionHandler() {
 
     @ExceptionHandler(Exception::class)
     fun handleAll(ex: Exception, request: WebRequest): ResponseEntity<Any> {
+        ex.printStackTrace()
         val apiError = ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.localizedMessage, "error occurred")
         return ResponseEntity(apiError, HttpHeaders(), apiError.status)
     }

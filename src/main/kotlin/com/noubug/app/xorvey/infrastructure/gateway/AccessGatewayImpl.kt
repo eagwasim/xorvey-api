@@ -3,10 +3,7 @@ package com.noubug.app.xorvey.infrastructure.gateway
 import com.noubug.app.xorvey.domain.entity.Account
 import com.noubug.app.xorvey.domain.entity.Access
 import com.noubug.app.xorvey.domain.gateway.AccessGateway
-import com.noubug.app.xorvey.domain.model.AuthenticateUserRequest
-import com.noubug.app.xorvey.domain.model.AuthenticateUserResponse
-import com.noubug.app.xorvey.domain.model.PasswordResetToken
-import com.noubug.app.xorvey.domain.model.RegisteredUser
+import com.noubug.app.xorvey.domain.model.*
 import com.noubug.app.xorvey.infrastructure.exception.InputParameterException
 import com.noubug.app.xorvey.infrastructure.persistence.enumeration.AccountTypeConstant
 import com.noubug.app.xorvey.infrastructure.persistence.jpa.model.JpaAccount
@@ -43,6 +40,7 @@ open class AccessGatewayImpl(
         private val jwtTokenProvider: JwtTokenProvider,
         private val messageSource: MessageSource
 ) : AccessGateway {
+
 
     override fun authenticateUser(authenticateUserRequest: AuthenticateUserRequest): AuthenticateUserResponse {
         val optionalJpaUser = jpaUserRepository.findByEmail(authenticateUserRequest.email)

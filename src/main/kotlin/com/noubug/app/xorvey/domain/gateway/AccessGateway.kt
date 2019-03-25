@@ -1,10 +1,7 @@
 package com.noubug.app.xorvey.domain.gateway
 
 import com.noubug.app.xorvey.domain.entity.Access
-import com.noubug.app.xorvey.domain.model.AuthenticateUserRequest
-import com.noubug.app.xorvey.domain.model.AuthenticateUserResponse
-import com.noubug.app.xorvey.domain.model.PasswordResetToken
-import com.noubug.app.xorvey.domain.model.RegisteredUser
+import com.noubug.app.xorvey.domain.model.*
 
 interface AccessGateway {
     fun registerUser(access: Access): RegisteredUser
