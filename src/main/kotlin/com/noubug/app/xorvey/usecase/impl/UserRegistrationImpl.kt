@@ -4,7 +4,7 @@ import com.noubug.app.xorvey.domain.entity.Email
 import com.noubug.app.xorvey.domain.gateway.EmailGateway
 import com.noubug.app.xorvey.domain.gateway.LocaleGateway
 import com.noubug.app.xorvey.domain.gateway.AccessGateway
-import com.noubug.app.xorvey.usecase.AccessRegistration
+import com.noubug.app.xorvey.usecase.UserRegistration
 import com.noubug.app.xorvey.usecase.model.UserRegistrationRequest
 import com.noubug.app.xorvey.usecase.model.UserRegistrationResponse
 import com.noubug.app.xorvey.usecase.model.toUser
@@ -13,12 +13,12 @@ import java.util.*
 import javax.inject.Named
 
 @Named
-class AccessRegistrationImpl(
+class UserRegistrationImpl(
         private val accessGateway: AccessGateway,
         private val emailGateway: EmailGateway,
         private val freemarkerUtils: FreemarkerUtils,
         private val localeGateway: LocaleGateway
-) : AccessRegistration {
+) : UserRegistration {
     override fun registerUser(userRegistrationRequest: UserRegistrationRequest): UserRegistrationResponse {
         val registeredUser = accessGateway.registerUser(userRegistrationRequest.toUser())
 
