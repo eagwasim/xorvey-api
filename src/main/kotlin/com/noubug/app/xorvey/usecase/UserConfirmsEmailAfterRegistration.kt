@@ -1,5 +1,5 @@
 package com.noubug.app.xorvey.usecase
 
-interface RegistrationEmailConfirmation {
+interface UserConfirmsEmailAfterRegistration {
     fun confirmEmailToken(token: String): Boolean
 }

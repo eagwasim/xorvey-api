@@ -1,5 +1,5 @@
 package com.noubug.app.xorvey.usecase
 
-interface AccessLogin {
+interface UserLogin {
     fun login(email: String, password: String): String
 }
